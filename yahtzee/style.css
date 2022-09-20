@@ -21,11 +21,12 @@ body{
 
 .container{
   background:#fff4e0;
-  border:1px solid #999999;
+  border:1px solid #2f2d2d;
   padding:20px;
   max-width:900px;
   margin:0 auto;
 }
+
 
 h1{
   text-align:center;
