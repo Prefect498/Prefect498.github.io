@@ -33,7 +33,7 @@ var fourCounter;
 
 var fiveCounter;
 
-var six counter;
+var sixCounter;
 
 
 
