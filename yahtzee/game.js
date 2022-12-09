@@ -1,6 +1,7 @@
-let rolledDice = [0, 0, 0, 0, 0]; 
+
 let timesRolled = 0;
 let gameScore = 0;
+let availableAssignments=6;
 
 /*****************************************
   ROLL
@@ -12,12 +13,9 @@ let gameScore = 0;
 function roll() {
   if (timesRolled < 3) {
     updateDice();
-    timesRolled++; 
-    
+    timesRolled++;
   }
 }
-
-let timesRolled = 0
 
 /*****************************************
   ROLL DICE
@@ -83,19 +81,61 @@ function assign(selectedNumber) {
   gameScore += scoreForThisRound;
   document.getElementById("totalScore").innerHTML = gameScore;
 
-
-  /*------------------------------------------------------------------------------------
-  CLASS 8 HOMEWORK
-    Add functionality to reset the game after the numbers have been assigned so that the user can roll another round.
-      
-      1. Reset the dice to be blank and white
-        ***HINT*** -- Look at the for loop in the getHeldDice function for how I selected all the die images, can you use something similar to reset all the die?
-        The src value of a reset die would be "/yahtzee/img/dice/dieWhite_border0.png"
+  availableAssignments--;
   
-      2.  Reset the timesRolled variable to 0;
-  ------------------------------------------------------------------------------------*/
-
+  if(availableAssignments===0){
+    gameOver();
+  }
+  
+  resetRoll();
+  
 }
+
+/******************************************
+RESET ROLL
+******************************************/
+function resetRoll() {
+  let resetDice = [];
+  for (let dieImage of document.querySelectorAll(".die > img")) {    
+    dieImage.src = "/yahtzee/img/dice/dieWhite_border0.png";    
+  }
+
+  timesRolled = 0;
+  return resetDice;
+}
+
+
+/******************************************
+GAME OVER
+  1. Display an alert to user with some message.
+  2. Reset the game board by calling the "newGame" function    
+******************************************/
+function gameOver(){
+  alert("Game Over! You your score is " + gameScore + ". Good job!");
+  newGame();
+}
+
+/******************************************
+NEW GAME
+  - Reset gameScore to 0
+  - Reset timesRolled to 0
+  - Reset dice images
+  - Reset the UI for each score group
+******************************************/
+function newGame(){
+
+  document.getElementById("1Count").innerHTML = '<button onclick="assign(1)">Assign</button>';
+  document.getElementById("2Count").innerHTML = '<button onclick="assign(2)">Assign</button>';
+  document.getElementById("3Count").innerHTML = '<button onclick="assign(3)">Assign</button>';
+  document.getElementById("4Count").innerHTML = '<button onclick="assign(4)">Assign</button>';
+  document.getElementById("5Count").innerHTML = '<button onclick="assign(5)">Assign</button>';
+  document.getElementById("6Count").innerHTML = '<button onclick="assign(6)">Assign</button>';
+
+  document.getElementById("1Score").innerHTML = 0;
+  document.getElementById("2Score").innerHTML = 0;
+  document.getElementById("Score").innerHTML = 0;
+}
+
 
 /******************************************
 GET HELD DICE
@@ -117,14 +157,6 @@ GET DIE VALUE
 function getDieValue(imageSource) {
   return Number(imageSource.split("/img/")[1].replace(/[^0-9]/ig, ""));
 }
-
-document.getElementById("die0Image").src="/yahtzee/img/dice/dieWhite_border0.png
-document.getElementById("die0Image").src="/yahtzee/img/dice/dieWhite_border0.png
-document.getElementById("die0Image").src="/yahtzee/img/dice/dieWhite_border0.png
-document.getElementById("die0Image").src="/yahtzee/img/dice/dieWhite_border0.png
-document.getElementById("die0Image").src="/yahtzee/img/dice/dieWhite_border0.png
-document.getElementById("die0Image").src="/yahtzee/img/dice/dieWhite_border0.png
-
 
 
 
