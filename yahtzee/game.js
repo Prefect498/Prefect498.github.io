@@ -133,7 +133,7 @@ function newGame() {
 
   document.getElementById("1Score").innerHTML = 0;
   document.getElementById("2Score").innerHTML = 0;
-  document.getElementById("Score").innerHTML = 0;
+  document.getElementById("totalScore").innerHTML = 0;
 }
 
 
