@@ -1,7 +1,7 @@
 
 let timesRolled = 0;
 let gameScore = 0;
-let availableAssignments=6;
+let availableAssignments = 6;
 
 /*****************************************
   ROLL
@@ -82,13 +82,13 @@ function assign(selectedNumber) {
   document.getElementById("totalScore").innerHTML = gameScore;
 
   availableAssignments--;
-  
-  if(availableAssignments===0){
+
+  if (availableAssignments === 0) {
     gameOver();
   }
-  
+
   resetRoll();
-  
+
 }
 
 /******************************************
@@ -96,8 +96,8 @@ RESET ROLL
 ******************************************/
 function resetRoll() {
   let resetDice = [];
-  for (let dieImage of document.querySelectorAll(".die > img")) {    
-    dieImage.src = "/yahtzee/img/dice/dieWhite_border0.png";    
+  for (let dieImage of document.querySelectorAll(".die > img")) {
+    dieImage.src = "/yahtzee/img/dice/dieWhite_border0.png";
   }
 
   timesRolled = 0;
@@ -110,7 +110,7 @@ GAME OVER
   1. Display an alert to user with some message.
   2. Reset the game board by calling the "newGame" function    
 ******************************************/
-function gameOver(){
+function gameOver() {
   alert("Game Over! You your score is " + gameScore + ". Good job!");
   newGame();
 }
@@ -122,7 +122,7 @@ NEW GAME
   - Reset dice images
   - Reset the UI for each score group
 ******************************************/
-function newGame(){
+function newGame() {
 
   document.getElementById("1Count").innerHTML = '<button onclick="assign(1)">Assign</button>';
   document.getElementById("2Count").innerHTML = '<button onclick="assign(2)">Assign</button>';
